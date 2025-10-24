@@ -93,73 +93,54 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
+          {/* Signature-style Muse logo */}
           <motion.div
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-2 select-none"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="relative">
-              {/* Complex Logo Design */}
-              <motion.div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-all duration-500 ${
+            <motion.div
+              className={`relative px-4 py-2 transition-all duration-700 ${
+                isScrolled ? "bg-transparent" : "bg-transparent"
+              }`}
+            >
+              {/* Overlapping cursive Muse text */}
+              <span
+                className={`text-5xl tracking-tighter font-bold italic transition-all duration-500 ${
                   isScrolled
-                    ? "bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-600 dark:to-teal-700"
-                    : "bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-600 dark:to-teal-700"
+                    ? "text-amber-700 dark:text-amber-400"
+                    : "text-white"
                 }`}
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Complex Logo Symbol - Medical Cross + Shield */}
-                <div className="relative w-8 h-8">
-                  {/* Shield Base */}
-                  <div className="absolute inset-0 bg-white/20 rounded-md transform rotate-45"></div>
-                  {/* Medical Cross */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-1 h-4 bg-white rounded-full"></div>
-                    <div className="absolute w-4 h-1 bg-white rounded-full"></div>
-                  </div>
-                  {/* Heart Pulse */}
-                  <div className="absolute -top-1 -right-1 w-2 h-2">
-                    <div className="w-full h-0.5 bg-white rounded-full transform rotate-45"></div>
-                  </div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2">
-                    <div className="w-full h-0.5 bg-white rounded-full transform -rotate-45"></div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Animated Glow Effect */}
-              <motion.div
-                className={`absolute -inset-1 rounded-xl blur opacity-30 transition-all duration-500 ${
-                  isScrolled
-                    ? "bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-600 dark:to-teal-700"
-                    : "bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-600 dark:to-teal-700"
-                }`}
-                animate={{ rotate: [0, 360] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "linear",
+                style={{
+                  fontFamily:
+                    "'Italianno', 'Qwitcher Grypen', 'Great Vibes', cursive",
+                  letterSpacing: "-0.08em", // tighter spacing to create natural overlap
+                  fontWeight: 400,
                 }}
-              />
-            </div>
+              >
+                Muse
+              </span>
 
-            {/* Logo Text */}
+              {/* Subtle underline accent */}
+              <motion.div
+                className={`absolute left-3 right-3 bottom-0 h-[1.5px] rounded-full ${
+                  isScrolled ? "bg-amber-600 dark:bg-amber-500" : "bg-white/70"
+                }`}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </motion.div>
+
+            {/* Tagline */}
             <div className="flex flex-col">
               <span
-                className={`text-2xl font-bold transition-colors duration-500 ${
-                  isScrolled ? "text-gray-900 dark:text-white" : "text-white"
-                }`}
-              >
-                MedCare
-              </span>
-              <span
-                className={`text-xs font-medium transition-colors duration-500 ${
+                className={`text-xs uppercase tracking-wider font-medium transition-colors duration-500 ${
                   isScrolled
-                    ? "text-emerald-600 dark:text-emerald-400"
-                    : "text-emerald-200"
+                    ? "text-gray-600 dark:text-gray-400"
+                    : "text-amber-200"
                 }`}
               >
-                Healthcare Excellence
+                Muse clinic
               </span>
             </div>
           </motion.div>
@@ -173,8 +154,8 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
                 className={`relative px-6 py-3 font-medium transition-all duration-500 rounded-full ${
                   isScrolled
                     ? activeSection === item.name.toLowerCase()
-                      ? "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30"
-                      : "text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
+                      ? "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30"
+                      : "text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400"
                     : activeSection === item.name.toLowerCase()
                     ? "text-white bg-white/20 backdrop-blur-sm"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -282,7 +263,7 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-300"
+                    className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-300"
                     onClick={() => setIsMobileMenuOpen(false)}
                     whileHover={{ x: 10 }}
                   >
@@ -294,7 +275,7 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
                 <div className="pt-4 border-t border-gray-200 dark:border-gray-600 space-y-4">
                   <motion.button
                     onClick={onOpenAppointmentModal}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition-colors duration-300 flex items-center justify-center space-x-2"
+                    className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors duration-300 flex items-center justify-center space-x-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
