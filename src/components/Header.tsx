@@ -117,7 +117,7 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
                   fontWeight: 400,
                 }}
               >
-                Muse
+                Muse Clinic
               </span>
 
               {/* Subtle underline accent */}
@@ -132,17 +132,6 @@ const Header = ({ onOpenAppointmentModal }: HeaderProps) => {
             </motion.div>
 
             {/* Tagline */}
-            <div className="flex flex-col">
-              <span
-                className={`text-xs uppercase tracking-wider font-medium transition-colors duration-500 ${
-                  isScrolled
-                    ? "text-gray-600 dark:text-gray-400"
-                    : "text-amber-200"
-                }`}
-              >
-                Muse clinic
-              </span>
-            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
